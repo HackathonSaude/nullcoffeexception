@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+        <meta charset="UTF-8">
+        <title>Blank App Designer Packaged Web App Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <style>
+            @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+                @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+            .altura-centro{
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+        <script src="cordova.js" id="xdkJScordova_"></script>
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="application/javascript" src="xdk/ad/bs_subpage.js"></script>
+        <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+        <script type="application/javascript">
+            
+            document.addEventListener("deviceready", onDeviceReady, false);
+            
+            function campos(){
+                document.getElementById("lat").value = -15.8767261;
+                document.getElementById("long").value = -18.2443357;
+            };
+            
+            function salvarOcorrencia() {
+                var msg = document.getElementById("mensagem").value;
+                
+                var element = document.getElementById('geolocation');
+                var long = position.coords.latitude;
+                var long = position.coords.longitude;
+                
+                var data = {"id_usu": 4,"mensagem": msg,"latitude": lat,"longitude": long};
+                
+                $.ajax({
+                     url: 'http://198.211.98.22:9000/v1/salva-ocorrencia',
+                     type: 'post',
+                     dataType: 'json',
+                     contentType: "application/json",
+                     data : JSON.stringify(data),
+                     success: function (result) {
+                         alert("Denúncia salva!");
+                     }
+                 });
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <div class="upage vertical-col left altura-centro" id="mainpage">
+
+            <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+                <div class="col uib_col_2 col-0_12-12" data-uib="layout/col" data-ver="0">
+                    <div class="widget-container content-area vertical-col">
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <span class="uib_shim"></span>
+            </div>
+            <div class="widget uib_w_1 scale-image d-margins" data-uib="media/img" data-ver="0">
+                <figure class="figure-align">
+                    <img src="images/mosquitao.jpg">
+
+                    <figcaption data-position="bottom"></figcaption>
+                </figure>
+            </div>
+            <div class="tarea widget uib_w_24 d-margins" data-uib="media/text" data-ver="0" name="uib_w_24">
+                <div class="widget-container left-receptacle"></div>
+                <div class="widget-container right-receptacle"></div>
+                <div class="text-container">
+                    <h2><strong>Monitoramento e controle de vetores</strong></h2>
+                </div>
+            </div>
+            <button class="btn widget uib_w_2 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1">Começar</button>
+        </div>
+
+        <div class="upage vertical-col left hidden" id="cadastro">
+            <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
+                <div class="col uib_col_4 col-0_12-12" data-uib="layout/col" data-ver="0">
+                    <div class="widget-container content-area vertical-col left">
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <span class="uib_shim"></span>
+            </div>
+            <div class="table-thing widget uib_w_7 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+                <label class="narrow-control" for="nome"></label>
+                <input class="wide-control form-control default" type="text" placeholder="Nome" id="nome">
+            </div>
+            <div class="table-thing widget uib_w_8 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+                <label class="narrow-control" for="email"></label>
+                <input class="wide-control form-control default" type="email" placeholder="Email" id="email">
+            </div>
+            <div class="table-thing widget uib_w_9 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+                <label class="narrow-control" for="senha"></label>
+                <input class="wide-control form-control default" type="password" placeholder="Senha" id="senha">
+            </div>
+            <div class="table-thing widget uib_w_10 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+                <label class="narrow-control"></label>
+                <input class="wide-control form-control default" type="password" placeholder="Confirme a senha">
+            </div>
+            <button class="btn widget uib_w_11 d-margins btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1">Registrar-se</button>
+            <button class="btn widget uib_w_12 d-margins btn-warning" data-uib="twitter%20bootstrap/button" data-ver="1">Voltar</button>
+        </div>
+        <div class="upage vertical-col left hidden" id="login">
+            <div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row" data-ver="0">
+                <div class="col uib_col_3 col-0_12-12" data-uib="layout/col" data-ver="0">
+                    <div class="widget-container content-area vertical-col">
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <span class="uib_shim"></span>
+            </div>
+            <div class="table-thing widget uib_w_3 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+                <label class="narrow-control" for="email"></label>
+                <input class="wide-control form-control default" type="text" placeholder="Email" id="email">
+            </div>
+            <div class="table-thing widget uib_w_4 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+                <label class="narrow-control" for="senha"></label>
+                <input class="wide-control form-control default" type="password" placeholder="Senha" id="senha">
+            </div>
+            <button class="btn widget uib_w_5 d-margins btn-lg btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1">Entrar</button>
+            <button class="btn widget uib_w_6 d-margins btn-info" data-uib="twitter%20bootstrap/button" data-ver="1">Cadastro</button>
+        </div>
+        <div class="upage vertical-col hidden" id="main">
+
+            <div class="cover">
+                <div class="navbar navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#"><span>Status da localização: tá suave</span></a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contacts</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="cover-image"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h1>Alertas</h1>
+                            <p>Você precisa trocar a água dos seus animais.</p>
+                            <br>
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn widget uib_w_25 d-margins btn-lg btn-danger" data-uib="twitter%20bootstrap/button" data-ver="1">Fazer denúncia</button>
+        </div>
+        <div class="upage vertical-col left hidden" id="perguntas">
+            <form class="form-horizontal">
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Perguntas</legend>
+
+                    <!-- Multiple Checkboxes -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="checkboxes">Selecione os itens que você tem em casa</label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                <label for="checkboxes-0">
+                                    <input type="checkbox" name="checkboxes" id="cb1" value="1">Animais
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="checkboxes-1">
+                                    <input type="checkbox" name="checkboxes" id="cb2" value="2">Plantas
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="checkboxes-0">
+                                    <input type="checkbox" name="checkboxes" id="cb3" value="3">Calhas de chuva
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="checkboxes-1">
+                                    <input type="checkbox" name="checkboxes" id="cb4" value="4">Caixa D'agua
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="checkboxes-0">
+                                    <input type="checkbox" name="checkboxes" id="cb5" value="5">Lixeira
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="checkboxes-1">
+                                    <input type="checkbox" name="checkboxes" id="cb6" value="6">Loje
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+            <button class="btn widget uib_w_22 d-margins btn-primary" data-uib="twitter%20bootstrap/button" data-ver="1">Finalizar cadastro</button>
+            <button class="btn widget uib_w_23 d-margins btn-warning" data-uib="twitter%20bootstrap/button" data-ver="1" id="voltarPerg">Voltar</button>
+        </div>
+        <div class="upage vertical-col left hidden" id="denuncia">
+            <div class="table-thing widget uib_w_16 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+                <label class="narrow-control label-top-left" for="lat">Latitude</label>
+                <input class="wide-control form-control default" type="text" id="lat" value="">
+            </div>
+            <div class="table-thing widget uib_w_19 d-margins" data-uib="twitter%20bootstrap/input" data-ver="1">
+                <label class="narrow-control label-top-left" for="long">Longitude</label>
+                <input class="wide-control form-control default" type="text" id="long" value="">
+            </div>
+            <button class="btn widget uib_w_17 d-margins btn-primary" onclick="campos();" data-uib="twitter%20bootstrap/button" data-ver="1">Capturar localização</button>
+            <div class="table-thing widget uib_w_20 d-margins" data-uib="twitter%20bootstrap/text_area" data-ver="1">
+                <label class="narrow-control label-top-left">Comentario</label>
+                <textarea rows="2" class="wide-control form-control" wrap="soft" id="mensagem"></textarea>
+            </div>
+            <button class="btn widget uib_w_18 d-margins btn-success" data-uib="twitter%20bootstrap/button" data-ver="1" onclick="salvarOcorrencia();">Registrar</button>
+            <button class="btn widget uib_w_21 d-margins btn-warning" data-uib="twitter%20bootstrap/button" data-ver="1" id="voltarDenuncia">Voltar</button>
+            
+            
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,21 @@
+db:
+  image: postgres
+  container_name: db
+  environment:
+    - POSTGRES_PASSWORD=postgres
+  ports:
+    - "5432:5432"
+  volumes:  
+    - ./volumes/postgres:/var/lib/postgresql/data
+app:
+  image: delermando/hackton-nullcoffeeexception:1.0
+  container_name: app
+  ports:
+    - "9000:80"
+  links:
+    - db
+  volumes:
+    - ./app:/app
+    - ./config/server/php:/etc/php5/fpm/pool.d/
+    - ./config/server/nginx/:/etc/nginx
+    - ./app/entrypoint.sh:/usr/local/bin/entrypoint.sh

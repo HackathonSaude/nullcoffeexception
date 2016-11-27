@@ -1,0 +1,33 @@
+//application/json
+
+//http://127.0.0.1:8080/v1/salva-usuario
+{
+	"nome": "Delermando",
+	"email": "delsantos@hotmail.com.br",
+	"senha": "123456"
+}
+
+//http://127.0.0.1:8080/v1/salva-questoes
+{
+	"id_usu": 1,
+	"ids_que": [1, 2, 3]
+}
+
+//http://127.0.0.1:8080/v1/salva-ocorrencia
+{
+	"id_usu": 1,
+	"mensagem": "Hello world!",
+	"latitude": -23.0085816,
+	"longitude": -43.3167113
+}
+
+//http://127.0.0.1:8080/v1/salva-endereco
+//{
+//	"id_usu": 1,
+//	"endereco": "Estrada da Barra da Tijuca",
+//	"numero": "3138",
+//	"bairro": "Itanhaga",
+//	"cidade": "Rio de Janeiro",
+//	"latitude": -23.0085816,
+//	"longitude": -43.3167113
+//}
